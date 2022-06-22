@@ -6,6 +6,7 @@ using MyDebtsApi.Models;
 namespace MyDebtsApi.Controllers{
 
     [ApiController]
+    //Uma opção também
     //[Route("v1")]
     public class DividaController : ControllerBase
     {
