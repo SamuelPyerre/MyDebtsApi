@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyDebtsApi.Data;
 using MyDebtsApi.Models;
+using MyDebtsApi.ViewModels;
 
 namespace MyDebtsApi.Controllers{
 
     [ApiController]
-    //Uma opção também
     //[Route("v1")]
     public class DividaController : ControllerBase
     {
@@ -58,15 +58,21 @@ namespace MyDebtsApi.Controllers{
 
         [HttpPost("v1/dividas")]
         public async Task<IActionResult> Post(
-        [FromBody] DividaModel model,
+        [FromBody] EditorDividaViewModel model,
         [FromServices] MyDebtsDbContext context)
         {
             try
             {
-                await context.Dividas.AddAsync(model);
+                var divida = new DividaModel{
+                    Id = 0,
+                    Titulo = model.Titulo,
+                    Descricao = model.Descricao
+
+                };
+                await context.Dividas.AddAsync(divida);
                 await context.SaveChangesAsync();
 
-                return Created($"v1/dividas/{model.Id}", model);
+                return Created($"v1/dividas/{divida.Id}", divida);
             }
             catch(DbUpdateException ex)
             {
@@ -83,7 +89,7 @@ namespace MyDebtsApi.Controllers{
         [HttpPut("v1/dividas/{id:int}")]
         public async Task<IActionResult> Put(
         [FromRoute] int id,
-        [FromBody] DividaModel model,
+        [FromBody] EditorDividaViewModel model,
         [FromServices] MyDebtsDbContext context)
         {
             try{

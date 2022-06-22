@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LMh60kWtQObY9vgnhCth0p4/LHzwQWJ0RujWzc0kgM9+9IzXmBUf05Jr1FdEfDAmAjsmVl33QZYBsp9FLSO8gw==",
+  "dgSpecHash": "RtJrPFVc0sd+WgbrAvJhTkwxCo47uHJgy5RgJtP1ye26DN0RPpucMqWSOpQEqVnyjYRjpAFD8ss2KGKvN5HODA==",
   "success": true,
-  "projectFilePath": "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
+  "projectFilePath": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
   "expectedPackageFiles": [
     "/home/samuelpierre/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/samuelpierre/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",

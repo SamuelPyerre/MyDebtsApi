@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj": {}
+    "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj": {}
   },
   "projects": {
-    "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj": {
+    "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
+        "projectUniqueName": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
         "projectName": "MyDebtsApi",
-        "projectPath": "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
+        "projectPath": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
         "packagesPath": "/home/samuelpierre/.nuget/packages/",
-        "outputPath": "/mnt/c/dev/angular/MyDebtsApi/MyDebtsApi/obj/",
+        "outputPath": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/samuelpierre/.nuget/NuGet/NuGet.Config"
