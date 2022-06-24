@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyDebtsApi.Data;
+using MyDebtsApi.Extensions;
 using MyDebtsApi.Models;
 using MyDebtsApi.ViewModels;
 
@@ -17,14 +18,10 @@ namespace MyDebtsApi.Controllers{
         {
             try{
                 var dividas = await context.Dividas.ToListAsync();
-                return Ok(dividas);
+                return Ok(new ResultViewModel<List<DividaModel>>(dividas));
             }
-            catch(DbUpdateException ex)
-            {
-                return StatusCode(500, "01DI1 - Não foi possível buscar os dados no Servidor!");
-            }
-            catch(Exception ex){
-                return StatusCode(500, "01DI2 - Falha interna do Servidor!");
+            catch{
+                return StatusCode(500, new ResultViewModel<List<DividaModel>>("01DI1 - Não foi possível buscar os dados no Servidor!"));
             }
             
             
@@ -41,17 +38,13 @@ namespace MyDebtsApi.Controllers{
 
                 if(divida == null)
                 {
-                    return NotFound();
+                    return NotFound(new ResultViewModel<DividaModel>("01DI33 - Não foi localizado esta Dívida!"));
                 }
 
-                return Ok(divida);
-            }
-            catch(DbUpdateException ex)
-            {
-                return StatusCode(500, "01DI3 - Não foi possível buscar os dados no Servidor!");
+                return Ok(new ResultViewModel<DividaModel>(divida));
             }
             catch(Exception ex){
-                return StatusCode(500, "01DI4 - Falha interna do Servidor!");
+                return StatusCode(500, new ResultViewModel<List<DividaModel>>("01DI3 - Não foi possível buscar os dados no Servidor!"));
             }
             
         }
@@ -61,6 +54,9 @@ namespace MyDebtsApi.Controllers{
         [FromBody] EditorDividaViewModel model,
         [FromServices] MyDebtsDbContext context)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(new ResultViewModel<DividaModel>(ModelState.GetErros()));
+
             try
             {
                 var divida = new DividaModel{
@@ -72,14 +68,14 @@ namespace MyDebtsApi.Controllers{
                 await context.Dividas.AddAsync(divida);
                 await context.SaveChangesAsync();
 
-                return Created($"v1/dividas/{divida.Id}", divida);
+                return Created($"v1/dividas/{divida.Id}", new ResultViewModel<DividaModel>(divida));
             }
             catch(DbUpdateException ex)
             {
-                return StatusCode(500, "01DI5 - Não foi possível inserir os dados no Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI5 - Não foi possível inserir os dados no Servidor!"));
             }
             catch(Exception ex){
-                return StatusCode(500, "01DI6 - Falha interna do Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI6 - Falha interna do Servidor!"));
             }
             
 
@@ -96,7 +92,7 @@ namespace MyDebtsApi.Controllers{
                 var divida = await context.Dividas.FirstOrDefaultAsync(x => x.Id == id);
                 if (divida == null)
                 {
-                    return NotFound();
+                    return NotFound(new ResultViewModel<DividaModel>("Não foi localizado essa dívida!"));
                 }
 
                 divida.Titulo = model.Titulo;
@@ -105,14 +101,14 @@ namespace MyDebtsApi.Controllers{
                 context.Dividas.Update(divida);
                 await context.SaveChangesAsync();
 
-                return Ok(model);
+                return Ok(new ResultViewModel<DividaModel>(divida));
             }
             catch(DbUpdateException ex)
             {
-                return StatusCode(500, "01DI7 - Não foi possível atualizar os dados no Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI7 - Não foi possível atualizar os dados no Servidor!"));
             }
             catch(Exception ex){
-                return StatusCode(500, "01DI8 - Falha interna do Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI8 - Falha interna do Servidor!"));
             }
             
         }
@@ -126,20 +122,20 @@ namespace MyDebtsApi.Controllers{
                 var divida = await context.Dividas.FirstOrDefaultAsync(x => x.Id == id);
                 if (divida == null)
                 {
-                    return NotFound();
+                    return NotFound(new ResultViewModel<DividaModel>("Dívida não encontrada!"));
                 }
 
                 context.Dividas.Remove(divida);
                 await context.SaveChangesAsync();
 
-                return Ok(divida);
+                return Ok(new ResultViewModel<DividaModel>(divida));
             }
             catch(DbUpdateException ex)
             {
-                return StatusCode(500, "01DI9 - Não foi possível excluir os dados no Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI9 - Não foi possível excluir os dados no Servidor!"));
             }
             catch(Exception ex){
-                return StatusCode(500, "01DI10 - Falha interna do Servidor!");
+                return StatusCode(500, new ResultViewModel<DividaModel>("01DI10 - Falha interna do Servidor!"));
             }
             
             
