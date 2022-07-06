@@ -19,6 +19,12 @@ namespace MyDebtsApi.Data.Mappings
                 .UseIdentityColumn();
 
             // Propriedades
+            builder
+                .HasOne(x => x.Autor)
+                .WithMany(x=> x.Dividas)
+                .HasConstraintName("FK_Divida_Autor")
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(x => x.Titulo)
                 .IsRequired()
                 .HasColumnName("Titulo")

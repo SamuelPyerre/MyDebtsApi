@@ -16,6 +16,7 @@ namespace MyDebtsApi.Controllers{
         public async Task<IActionResult> Get(
         [FromServices]MyDebtsDbContext context)
         {
+            
             try{
                 var dividas = await context.Dividas.ToListAsync();
                 return Ok(new ResultViewModel<List<DividaModel>>(dividas));

@@ -30,6 +30,9 @@ namespace MyDebtsApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("AutorId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DataCriacao")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(60)
@@ -51,7 +54,57 @@ namespace MyDebtsApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AutorId");
+
                     b.ToTable("Divida", (string)null);
+                });
+
+            modelBuilder.Entity("MyDebtsApi.Models.UsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("NVARCHAR(120)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR(100)")
+                        .HasColumnName("Nome");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("NVARCHAR(100)")
+                        .HasColumnName("Password");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuario", (string)null);
+                });
+
+            modelBuilder.Entity("MyDebtsApi.Models.DividaModel", b =>
+                {
+                    b.HasOne("MyDebtsApi.Models.UsuarioModel", "Autor")
+                        .WithMany("Dividas")
+                        .HasForeignKey("AutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Author_Divida");
+
+                    b.Navigation("Autor");
+                });
+
+            modelBuilder.Entity("MyDebtsApi.Models.UsuarioModel", b =>
+                {
+                    b.Navigation("Dividas");
                 });
 #pragma warning restore 612, 618
         }
