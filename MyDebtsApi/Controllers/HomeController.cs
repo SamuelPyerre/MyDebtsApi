@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyDebtsApi.Attributes;
 
 namespace MyDebtsApi.Controllers
 {
@@ -8,6 +9,7 @@ namespace MyDebtsApi.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet("")]
+        [ApiKey]
         public IActionResult Get()
         {
             return Ok("Testando Api");

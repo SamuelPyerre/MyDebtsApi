@@ -2849,19 +2849,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Samuel Pierre\\.nuget\\packages\\": {}
+    "/home/samuelpierre/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\Repositório\\MyDebtsApi\\MyDebtsApi\\MyDebtsApi.csproj",
+      "projectUniqueName": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
       "projectName": "MyDebtsApi",
-      "projectPath": "C:\\dev\\Repositório\\MyDebtsApi\\MyDebtsApi\\MyDebtsApi.csproj",
-      "packagesPath": "C:\\Users\\Samuel Pierre\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\Repositório\\MyDebtsApi\\MyDebtsApi\\obj\\",
+      "projectPath": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/MyDebtsApi.csproj",
+      "packagesPath": "/home/samuelpierre/.nuget/packages/",
+      "outputPath": "/mnt/c/dev/Repositório/MyDebtsApi/MyDebtsApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Samuel Pierre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/samuelpierre/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -2934,7 +2934,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
       }
     }
   }
